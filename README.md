@@ -12,8 +12,8 @@ pip install -r requirements.txt
 
 ## Prepare Data
 ### TED Dataset
-Prepare TED following [Gesture-Generation-from-Trimodal-Context
-](https://github.com/ai4r/Gesture-Generation-from-Trimodal-Context) link and it to ./datasets/ted_dataset. 
+Prepare TED following [TriModel
+](https://github.com/ai4r/Gesture-Generation-from-Trimodal-Context)  and link it to ./datasets/ted_dataset. 
 
 ```
 ln -s path_to_ted ./datasets/ted_dataset
@@ -21,14 +21,13 @@ ln -s path_to_ted ./datasets/ted_dataset
 
 
 ### BEAT Dataset
-Prepare TED following [BEAT](https://pantomatrix.github.io/BEAT/) link and it to ./datasets/BEAT. 
+Prepare TED following [BEAT](https://pantomatrix.github.io/BEAT/) and link it to ./datasets/BEAT. 
 
 ```
 ln -s path_to_ted ./datasets/ted_dataset
 ```
 
 ## Run the code
-Take `ZJU-Mocap 313` as an example, other configs files are provided in `configs/{h36m,zju_mocap}`.
 ### Command Lines 
    Train RAG
 
@@ -46,19 +45,20 @@ Test LivelySpeaker
 python scripts/test_LivelySpeaker_ted.py.py --model_path ckpts/ted_best.pt 
 ```
 
-## Acknowledge
-We would like to acknowledge the following third-party repositories we used in this project:
-- [[Tinycuda-nn]](https://github.com/NVlabs/tiny-cuda-nn)
-- [[Openpose]](https://github.com/CMU-Perceptual-Computing-Lab/openpose)
-- [[ROMP]](https://github.com/Arthur151/ROMP)
-- [[Segment-anything]](https://github.com/facebookresearch/segment-anything)
+## TODO
+1.supp video upload. 
 
-Besides, we used code from:
-- [[Anim-NeRf]](https://github.com/JanaldoChen/Anim-NeRF)
-- [[SelfRecon]](https://github.com/jby1993/SelfReconCode)
-- [[lpips]](https://github.com/richzhang/PerceptualSimilarity)
-- [[SMPLX]](https://github.com/vchoutas/smplx)
-- [[pytorch3d]](https://github.com/facebookresearch/pytorch3d)
+2.checkpoints.
+
+3.code on BEAT
+
+...
+
+
+## Acknowledge
+We build our code base from: [MotionCLIP](https://github.com/GuyTevet/MotionCLIP), [MDM](https://github.com/GuyTevet/motion-diffusion-model),
+[TriModal
+](https://github.com/ai4r/Gesture-Generation-from-Trimodal-Context), [BEAT](https://pantomatrix.github.io/BEAT/). 
 
 
 
@@ -66,10 +66,12 @@ Besides, we used code from:
 
 ## Citation
 ```
-@article{jiang2022instantavatar,
-  author    = {Jiang, Tianjian and Chen, Xu and Song, Jie and Hilliges, Otmar},
-  title     = {InstantAvatar: Learning Avatars from Monocular Video in 60 Seconds},
-  journal   = {arXiv},
-  year      = {2022},
+@InProceedings{Zhi_2023_ICCV,
+    author    = {Zhi, Yihao and Cun, Xiaodong and Chen, Xuelin and Shen, Xi and Guo, Wen and Huang, Shaoli and Gao, Shenghua},
+    title     = {LivelySpeaker: Towards Semantic-Aware Co-Speech Gesture Generation},
+    booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+    month     = {October},
+    year      = {2023},
+    pages     = {20807-20817}
 }
 ```
