@@ -21,7 +21,7 @@ ln -s path_to_ted ./datasets/ted_dataset
 
 
 ### BEAT Dataset
-Prepare TED following [BEAT](https://pantomatrix.github.io/BEAT/) and link it to ./datasets/BEAT. 
+Prepare BEAT following [BEAT](https://pantomatrix.github.io/BEAT/) and link it to ./datasets/BEAT. 
 
 ```
 ln -s path_to_ted ./datasets/ted_dataset

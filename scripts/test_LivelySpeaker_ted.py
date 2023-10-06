@@ -49,7 +49,7 @@ def load_model(ckpt_path, cfg):
 frames = 34
 skeleton_resampling_fps = 15
 batchify = False
-motionclip_ckpt_path = f'/p300/wangchy/zhiyh/ted_output/motionclipprompt_preseq4_allmetric.pth' 
+motionclip_ckpt_path = f'ckpts/TED/SAG.pth' 
 
 SAG, clip_model = load_model(motionclip_ckpt_path, args)
 
