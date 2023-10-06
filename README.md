@@ -1,7 +1,7 @@
 # LivelySpeaker
 [ICCV-2023] The official repo for the paper "LivelySpeaker: Towards Semantic-aware Co-Speech Gesture Generation"
 
-[[paper](https://arxiv.org/abs/2309.09294) / video]
+[[paper](https://arxiv.org/abs/2309.09294) / [video](https://www.youtube.com/watch?v=arYqydsXM2I)]
 
 ## Install the dependencies
 ```
@@ -13,7 +13,7 @@ pip install -r requirements.txt
 ## Prepare Data
 ### TED Dataset
 Prepare TED following [TriModel
-](https://github.com/ai4r/Gesture-Generation-from-Trimodal-Context)  and link it to ./datasets/ted_dataset. 
+](https://github.com/ai4r/Gesture-Generation-from-Trimodal-Context)  and link it to `./datasets/ted_dataset`. 
 
 ```
 ln -s path_to_ted ./datasets/ted_dataset
@@ -21,7 +21,7 @@ ln -s path_to_ted ./datasets/ted_dataset
 
 
 ### BEAT Dataset
-Prepare BEAT following [BEAT](https://pantomatrix.github.io/BEAT/) and link it to ./datasets/BEAT. 
+Prepare BEAT following [BEAT](https://pantomatrix.github.io/BEAT/) and link it to `./datasets/BEAT`. 
 
 ```
 ln -s path_to_ted ./datasets/ted_dataset
@@ -37,20 +37,21 @@ python scripts/train_RAG.py --exp RAG -b 512
 
 Test RAG
 ```
-python scripts/test_RAG_ted.py --model_path ckpts/ted_best.pt 
+python scripts/test_RAG_ted.py --model_path ckpts/TED/RAG.pt 
 ```
 
 Test LivelySpeaker
 ```
-python scripts/test_LivelySpeaker_ted.py.py --model_path ckpts/ted_best.pt 
+python scripts/test_LivelySpeaker_ted.py.py --model_path ckpts/TED/RAG.pt
 ```
+## Model
+
+We provide all checkpoints at [here](https://shanghaitecheducn-my.sharepoint.com/:f:/g/personal/zhiyh_shanghaitech_edu_cn/EnQYJXZH3JZJpv-byHywzuQB48T9OYAwpDpwg_BQSKTPKw?e=Rx95Kv). Download and link it to `./ckpts`.
+
+
 
 ## TODO
-1.supp video upload. 
-
-2.checkpoints.
-
-3.code on BEAT
+1.code on BEAT
 
 ...
 
