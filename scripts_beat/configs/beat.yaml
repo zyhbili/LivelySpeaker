@@ -1,0 +1,35 @@
+# ------------- path and save name ---------------- #
+is_train: True 
+out_root_path: /apdcephfs_cq2/share_1290939/yihaozhi/beat_output/
+vocab_path: /p300/wangchy/zhiyh/BEAT_dataset/vocab.pkl
+train_data_path:  /p300/wangchy/zhiyh/BEAT_dataset/train/
+val_data_path: /p300/wangchy/zhiyh/BEAT_dataset/test/
+test_data_path: /p300/wangchy/zhiyh/BEAT_dataset/test/
+mean_pose_path: /apdcephfs_cq2/share_1290939/yihaozhi/BEAT/beat_english_15_141_origin/train/
+std_pose_path: /apdcephfs_cq2/share_1290939/yihaozhi/BEAT/beat_english_15_141_origin/train/
+torch_hub_path: /datasets/checkpoints/ 
+e_path:  /p300/wangchy/zhiyh/BEAT_dataset/baselines/best_rec_200.bin
+# e_path:  /apdcephfs_cq2/share_1290939/yihaozhi/BEAT_AE/ckpt/ae_best/best_rec_2000.bin
+
+dataset: beat
+pose_rep: bvh_rot
+
+vae_length: 300
+audio_rep: wave16k
+facial_rep: facial52
+speaker_id: True
+word_f: 256
+emotion_f: 8
+speaker_f: 8
+audio_f: 128
+facial_f: 0
+pose_dims: 282
+batch_size: 512
+test_period: 20
+word_rep: text
+sem_rep: sem
+no_adv_epoch: 40
+emo_rep: emo
+hidden_size: 256
+
+speakers: [2,4,6,8]
