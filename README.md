@@ -21,13 +21,13 @@ ln -s path_to_ted ./datasets/ted_dataset
 
 
 ### BEAT Dataset
-Prepare BEAT following [BEAT](https://pantomatrix.github.io/BEAT/) and link it to `./datasets/BEAT`. 
+Prepare BEAT following [BEAT](https://pantomatrix.github.io/BEAT/) and modify the data path in `./scripts_beat.yaml/configs/beat.yaml`
 
 ```
 ln -s path_to_ted ./datasets/ted_dataset
 ```
 
-## Run the code
+## Run the code on TED
 ### Command Lines 
    Train RAG
 
@@ -44,16 +44,35 @@ Test LivelySpeaker
 ```
 python scripts/test_LivelySpeaker_ted.py.py --model_path ckpts/TED/RAG.pt
 ```
+
+## Run the code on BEAT
+### Command Lines 
+   Train RAG
+
+```
+python train_RAG.py -c ./configs/beat.yaml --exp beat --epochs 1501
+```
+
+Test RAG
+```
+python test_LivelySpeaker_beat.py --model_path ckpts/BEAT/RAG.pt -c configs/beat.yaml
+```
+
+Test LivelySpeaker
+```
+python test_RAG_beat.py --model_path ckpts/BEAT/RAG.pt -c configs/beat.yaml
+```
+
+
+
 ## Model
 
-We provide all checkpoints at [here](https://shanghaitecheducn-my.sharepoint.com/:f:/g/personal/zhiyh_shanghaitech_edu_cn/EnQYJXZH3JZJpv-byHywzuQB48T9OYAwpDpwg_BQSKTPKw?e=Rx95Kv). Download and link it to `./ckpts`.
+We provide all checkpoints at [here](https://cuhko365-my.sharepoint.com/:f:/g/personal/223010099_link_cuhk_edu_cn/EsK6Bc_a3A1FhgxvBUjlYN4BsLt1Ur6U4LF5mqo3BQZLwQ?e=bh5UzG). Download and link it to `./ckpts`.
+
+To run the FGD evaluation of TED. You should first download of Encoder weights from [TriModal](https://github.com/ai4r/Gesture-Generation-from-Trimodal-Context)
 
 
 
-## TODO
-1.code on BEAT
-
-...
 
 
 ## Acknowledge

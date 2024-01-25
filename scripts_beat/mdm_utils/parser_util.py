@@ -297,6 +297,7 @@ def add_beat_options(parser):
     group.add("--mean_pose_path", default="/datasets/trinity/train/", type=str)
     group.add("--std_pose_path", default="/datasets/trinity/train/", type=str)
     group.add("--vocab_path", default="/datasets/trinity/train/", type=str)
+    group.add("--sag_path", default="", type=str)
 
     # for pretrian weights
     group.add("--torch_hub_path", default="../../datasets/checkpoints/", type=str)

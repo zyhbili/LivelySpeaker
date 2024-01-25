@@ -53,7 +53,7 @@ class RAG(nn.Module):
         self.arch = arch
         self.gru_emb_dim = self.latent_dim if self.arch == 'gru' else 0
         self.mlpact = mlpact
-        self.backbone = build_mlps(seq_len=35,num_layers=num_layers, hidden_dim=latent_dim, act=self.mlpact)
+        self.backbone = build_mlps(seq_len=36,num_layers=num_layers, hidden_dim=latent_dim, act=self.mlpact)
         self.input_process = InputProcess(self.data_rep, self.input_feats * 2+1+self.gru_emb_dim, self.latent_dim)
 
 
@@ -68,6 +68,9 @@ class RAG(nn.Module):
         self.speaker_mu = nn.Linear(256, self.latent_dim)
         self.speaker_logvar = nn.Linear(256, self.latent_dim)
         self.n_pre_seq = 4
+
+        self.emotion_embedding = nn.Embedding(8, latent_dim)
+        nn.init.constant_(self.emotion_embedding.weight, 1e-6)
 
         self.audio_encoder = WavEncoder()
         self.output_process = OutputProcess(self.data_rep, self.input_feats, self.latent_dim, self.njoints,
@@ -113,13 +116,14 @@ class RAG(nn.Module):
 
         x = self.input_mapping(x)
 
-        n_pre_emb = 1
+        n_pre_emb = 2
         z_context = self.speaker_embedding(y['vid_indices'])[:,None]
         z_mu = self.speaker_mu(z_context)
         z_logvar = self.speaker_logvar(z_context)
         style_emb = reparameterize(z_mu, z_logvar)
 
-        xseq = torch.cat((style_emb, x),dim =1)
+        emo_emb = self.emotion_embedding(y['emo'][:,0])[:,None]
+        xseq = torch.cat((style_emb, emo_emb,x),dim =1)
 
         output = self.backbone(xseq, timesteps)[:,n_pre_emb:].permute(1,0,2)
         output = self.output_process(output)  # [bs, njoints, nfeats, nframes]

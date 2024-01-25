@@ -80,35 +80,7 @@ class TrainLoop:
         self.eval_wrapper, self.eval_data, self.eval_gt_data = None, None, None
 
 
-        # opt_checkpoint = "/apdcephfs/share_1290939/yihaozhi/MDM_BEAT/zi_kl_mlp0_mlpT_2048/opt000055110.pt"
-        # state_dict = dist_util.load_state_dict(
-        #     opt_checkpoint, map_location=dist_util.dev()
-        # )
-        # self.opt.load_state_dict(state_dict)
-
-        # model_checkpoint = "/apdcephfs/share_1290939/yihaozhi/MDM_BEAT/zi_kl_mlp0_mlpT_2048/model000055110.pt"
-        # state_dict = dist_util.load_state_dict(
-        #     model_checkpoint, map_location=dist_util.dev()
-        # )
-        # self.model.load_state_dict(state_dict)
-        # if args.dataset in ['kit', 'humanml'] and args.eval_during_training:
-        #     mm_num_samples = 0  # mm is super slow hence we won't run it during training
-        #     mm_num_repeats = 0  # mm is super slow hence we won't run it during training
-        #     gen_loader = get_dataset_loader(name=args.dataset, batch_size=args.eval_batch_size, num_frames=None,
-        #                                     split=args.eval_split,
-        #                                     hml_mode='eval')
-
-        #     self.eval_gt_data = get_dataset_loader(name=args.dataset, batch_size=args.eval_batch_size, num_frames=None,
-        #                                            split=args.eval_split,
-        #                                            hml_mode='gt')
-        #     self.eval_wrapper = EvaluatorMDMWrapper(args.dataset, dist_util.dev())
-        #     self.eval_data = {
-        #         'test': lambda: eval_humanml.get_mdm_loader(
-        #             model, diffusion, args.eval_batch_size,
-        #             gen_loader, mm_num_samples, mm_num_repeats, gen_loader.dataset.opt.max_motion_length,
-        #             args.eval_num_samples, scale=1.,
-        #         )
-        #     }
+      
         self.use_ddp = False
         self.ddp_model = self.model
         # self.speaker_model = self.data.dataset.speaker_model
